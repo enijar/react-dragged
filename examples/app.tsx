@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Examples from "./examples/index";
+import Examples from "./examples";
 import Basic from "./examples/basic";
 import LargeList from "./examples/large-list";
 

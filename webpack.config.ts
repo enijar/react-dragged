@@ -6,8 +6,8 @@ const HtmlInlineScriptPlugin = require("html-inline-script-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const DEV_MODE = process.env.NODE_ENV === "development";
-const SRC_DIR = path.resolve(__dirname, "integration", "src");
-const BUILD_DIR = path.resolve(__dirname, "integration", "build");
+const SRC_DIR = path.resolve(__dirname, "examples");
+const BUILD_DIR = path.resolve(__dirname, "build");
 
 const config = {
   mode: DEV_MODE ? "development" : "production",

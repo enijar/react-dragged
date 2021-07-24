@@ -4,7 +4,7 @@
     "module": "commonjs",
     "lib": ["es6", "dom"],
     "declaration": true,
-    "outDir": "build",
+    "outDir": "lib",
     "rootDir": "src",
     "strict": false,
     "jsx": "react-jsx",
@@ -12,6 +12,6 @@
     "types": ["node"],
     "typeRoots": ["node_modules/@types"]
   },
-  "exclude": ["node_modules", "build", "integration"],
+  "exclude": ["node_modules", "build", "lib", "examples"],
   "include": ["src/**/*"]
 }
