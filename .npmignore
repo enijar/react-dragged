@@ -1,6 +1,7 @@
 src/
 .idea/
 integration/
+misc/
 .DS_Store
 .editorconfig
 tsconfig.lib.json
