@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "lib": ["es6", "dom"],
+    "declaration": true,
+    "outDir": "build",
+    "rootDir": "src",
+    "strict": false,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"]
+  },
+  "exclude": ["node_modules", "build", "integration"],
+  "include": ["src/**/*"]
+}

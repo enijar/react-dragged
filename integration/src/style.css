@@ -1,0 +1,23 @@
+:root {
+  --size: 20px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+html {
+  font-family: Arial, sans-serif;
+  font-size: var(--size);
+}
+
+.items [data-drag-sort-state="dragged"] {
+  opacity: 0.2;
+}
+
+.item {
+  padding: 0.5em 1em;
+  border-bottom: 2px dashed grey;
+}
