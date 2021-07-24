@@ -1,5 +1,6 @@
 {
   "name": "react-dragged",
+  "version": "0.0.1",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "repository": {
