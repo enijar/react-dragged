@@ -2,6 +2,8 @@
 
 Small React drag and sort component.
 
+![Demo](./misc/demo.gif)
+
 ### Installation
 
 ```shell
