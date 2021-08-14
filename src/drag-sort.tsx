@@ -6,6 +6,7 @@ export type Props<T> = {
   items: T[];
   onChange: OnChange<T>;
   renderItem: RenderItem<T>;
+  renderContainerElement?: any;
   renderItemElement?: any;
 };
 
@@ -13,6 +14,7 @@ export default function DragSort<T>({
   items,
   onChange,
   renderItem,
+  renderContainerElement,
   renderItemElement,
 }: Props<T>) {
   /**
@@ -78,6 +80,11 @@ export default function DragSort<T>({
     [items]
   );
 
+  const ContainerElement = React.useMemo<any>(() => {
+    if (!renderContainerElement) return "div";
+    return renderContainerElement;
+  }, [renderContainerElement]);
+
   const ItemElement = React.useMemo<any>(() => {
     if (!renderItemElement) return "div";
     return renderItemElement;
@@ -88,7 +95,7 @@ export default function DragSort<T>({
    */
 
   return (
-    <div data-drag-sort="container">
+    <ContainerElement data-drag-sort="container">
       {sortedItems.map((item, index) => {
         return (
           <ItemElement
@@ -104,6 +111,6 @@ export default function DragSort<T>({
           </ItemElement>
         );
       })}
-    </div>
+    </ContainerElement>
   );
 }
