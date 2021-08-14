@@ -89,7 +89,7 @@ export default function DragSort<T>({ items, onChange, renderItem }: Props<T>) {
             onDragEnter={onDrag(item, index)}
             onDragEnd={onDrag(item, index)}
           >
-            {renderItemRef.current(item)}
+            {renderItemRef.current(item, index)}
           </div>
         );
       })}

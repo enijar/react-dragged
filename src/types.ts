@@ -8,6 +8,6 @@ export type Dragged<T> = {
   element: HTMLElement;
 };
 
-export type RenderItem<T> = (item: T) => any;
+export type RenderItem<T> = (item: T, index?: number) => any;
 
 export type OnChange<T> = (items: T[]) => void;
