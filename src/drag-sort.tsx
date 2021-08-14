@@ -6,9 +6,15 @@ export type Props<T> = {
   items: T[];
   onChange: OnChange<T>;
   renderItem: RenderItem<T>;
+  renderItemElement?: any;
 };
 
-export default function DragSort<T>({ items, onChange, renderItem }: Props<T>) {
+export default function DragSort<T>({
+  items,
+  onChange,
+  renderItem,
+  renderItemElement,
+}: Props<T>) {
   /**
    * Store callbacks inside refs
    */
@@ -72,6 +78,11 @@ export default function DragSort<T>({ items, onChange, renderItem }: Props<T>) {
     [items]
   );
 
+  const ItemElement = React.useMemo<any>(() => {
+    if (!renderItemElement) return "div";
+    return renderItemElement;
+  }, [renderItemElement]);
+
   /**
    * Render UI
    */
@@ -80,7 +91,7 @@ export default function DragSort<T>({ items, onChange, renderItem }: Props<T>) {
     <div data-drag-sort="container">
       {sortedItems.map((item, index) => {
         return (
-          <div
+          <ItemElement
             key={item.id}
             draggable
             data-drag-sort-state="static"
@@ -90,7 +101,7 @@ export default function DragSort<T>({ items, onChange, renderItem }: Props<T>) {
             onDragEnd={onDrag(item, index)}
           >
             {renderItemRef.current(item, index)}
-          </div>
+          </ItemElement>
         );
       })}
     </div>
