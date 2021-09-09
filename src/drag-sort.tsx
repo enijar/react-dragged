@@ -38,6 +38,9 @@ export default function DragSort<T>({
   const sortedItems = React.useMemo(() => addIdToItems(items), [items]);
   const draggedRef = React.useRef<Dragged<T> | null>(null);
   const sortedItemsRef = React.useRef<SortedItem<T>[]>(sortedItems);
+  React.useEffect(() => {
+    sortedItemsRef.current = sortedItems;
+  }, [sortedItems]);
 
   const onDrag = React.useCallback(
     (item: T, index: number) => {
