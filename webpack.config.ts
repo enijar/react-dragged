@@ -70,7 +70,7 @@ const config = {
     chunkFilename: "[name].[contenthash:8].chunk.js",
     path: BUILD_DIR,
     clean: true,
-    publicPath: "/",
+    publicPath: "",
   },
 };
 
