@@ -46,7 +46,7 @@ import React from "react";
 import DragSort from "react-dragged";
 
 type Item = {
-  string: string;
+  title: string;
 };
 
 function Example() {
