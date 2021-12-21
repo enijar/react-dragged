@@ -2,12 +2,16 @@ import React from "react";
 import { Dragged, OnChange, RenderItem, SortedItem } from "./types";
 import { addIdToItems, isBefore, moveItem } from "./utils";
 
+const DEFAULT_DRAG_IMAGE = new Image();
+DEFAULT_DRAG_IMAGE.src = `data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=`;
+
 export type Props<Item> = {
   items: Item[];
   onChange: OnChange<Item>;
   renderItem: RenderItem<Item>;
   renderContainerElement?: any;
   renderItemElement?: any;
+  dragImage?: HTMLImageElement;
 };
 
 export default function DragSort<Item>({
@@ -16,6 +20,7 @@ export default function DragSort<Item>({
   renderItem,
   renderContainerElement,
   renderItemElement,
+  dragImage = DEFAULT_DRAG_IMAGE,
 }: Props<Item>) {
   /**
    * Store callbacks inside refs
@@ -45,6 +50,7 @@ export default function DragSort<Item>({
   const onDrag = React.useCallback(
     (item: Item, index: number) => {
       return (event: React.DragEvent<HTMLElement>) => {
+        event.dataTransfer.setDragImage(dragImage, 0, 0);
         let element = event.target as HTMLElement;
         if (!element.dataset.hasOwnProperty("dragSortType")) {
           element = element.closest(
@@ -80,7 +86,7 @@ export default function DragSort<Item>({
         }
       };
     },
-    [items]
+    [items, dragImage]
   );
 
   const ContainerElement = React.useMemo<any>(() => {
