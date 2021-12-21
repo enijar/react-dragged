@@ -22,12 +22,12 @@ export default function DragSort<Item>({
    */
 
   const onChangeRef = React.useRef<OnChange<Item>>(onChange);
-  React.useEffect(() => {
+  React.useMemo(() => {
     onChangeRef.current = onChange;
   }, [onChange]);
 
   const renderItemRef = React.useRef<RenderItem<Item>>(renderItem);
-  React.useEffect(() => {
+  React.useMemo(() => {
     renderItemRef.current = renderItem;
   }, [onChange]);
 
@@ -38,7 +38,7 @@ export default function DragSort<Item>({
   const sortedItems = React.useMemo(() => addIdToItems(items), [items]);
   const draggedRef = React.useRef<Dragged<Item> | null>(null);
   const sortedItemsRef = React.useRef<SortedItem<Item>[]>(sortedItems);
-  React.useEffect(() => {
+  React.useMemo(() => {
     sortedItemsRef.current = sortedItems;
   }, [sortedItems]);
 
