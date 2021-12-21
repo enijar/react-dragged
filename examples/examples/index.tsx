@@ -10,6 +10,9 @@ export default function Index() {
       <li>
         <Link to="/examples/large-list">Large List</Link>
       </li>
+      <li>
+        <Link to="/examples/custom-elements">Custom Elements</Link>
+      </li>
     </ol>
   );
 }
