@@ -4,6 +4,8 @@ Small React drag and sort component.
 
 ![Demo](./misc/demo.gif)
 
+[**View Live Examples**](https://enijar.github.io/react-dragged/)
+
 ### Installation
 
 ```shell
@@ -56,6 +58,30 @@ function Example() {
 
   return (
     <DragSort<Item>
+      items={items}
+      onChange={setItems}
+      renderItem={(item) => {
+        return <div className="item">{item.title}</div>;
+      }}
+      renderContainerElement="ol"
+      renderItemElement="li"
+    />
+  );
+}
+```
+
+**Custom Elements**
+
+```jsx
+function Example() {
+  const [items, setItems] = React.useState([
+    { title: "A" },
+    { title: "B" },
+    { title: "C" },
+  ]);
+
+  return (
+    <DragSort
       items={items}
       onChange={setItems}
       renderItem={(item) => {
