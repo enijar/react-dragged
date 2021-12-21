@@ -2,31 +2,31 @@ import React from "react";
 import { Dragged, OnChange, RenderItem, SortedItem } from "./types";
 import { addIdToItems, isBefore, moveItem } from "./utils";
 
-export type Props<T> = {
-  items: T[];
-  onChange: OnChange<T>;
-  renderItem: RenderItem<T>;
+export type Props<Item> = {
+  items: Item[];
+  onChange: OnChange<Item>;
+  renderItem: RenderItem<Item>;
   renderContainerElement?: any;
   renderItemElement?: any;
 };
 
-export default function DragSort<T>({
+export default function DragSort<Item>({
   items,
   onChange,
   renderItem,
   renderContainerElement,
   renderItemElement,
-}: Props<T>) {
+}: Props<Item>) {
   /**
    * Store callbacks inside refs
    */
 
-  const onChangeRef = React.useRef<OnChange<T>>(onChange);
+  const onChangeRef = React.useRef<OnChange<Item>>(onChange);
   React.useEffect(() => {
     onChangeRef.current = onChange;
   }, [onChange]);
 
-  const renderItemRef = React.useRef<RenderItem<T>>(renderItem);
+  const renderItemRef = React.useRef<RenderItem<Item>>(renderItem);
   React.useEffect(() => {
     renderItemRef.current = renderItem;
   }, [onChange]);
@@ -36,14 +36,14 @@ export default function DragSort<T>({
    */
 
   const sortedItems = React.useMemo(() => addIdToItems(items), [items]);
-  const draggedRef = React.useRef<Dragged<T> | null>(null);
-  const sortedItemsRef = React.useRef<SortedItem<T>[]>(sortedItems);
+  const draggedRef = React.useRef<Dragged<Item> | null>(null);
+  const sortedItemsRef = React.useRef<SortedItem<Item>[]>(sortedItems);
   React.useEffect(() => {
     sortedItemsRef.current = sortedItems;
   }, [sortedItems]);
 
   const onDrag = React.useCallback(
-    (item: T, index: number) => {
+    (item: Item, index: number) => {
       return (event: React.DragEvent<HTMLElement>) => {
         let element = event.target as HTMLElement;
         if (!element.dataset.hasOwnProperty("dragSortType")) {
