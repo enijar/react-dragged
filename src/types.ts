@@ -1,5 +1,5 @@
 export type SortedItem<T> = T & {
-  id: string;
+  $id: string;
 };
 
 export type Dragged<T> = {

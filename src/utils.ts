@@ -23,6 +23,6 @@ export function moveItem<T>(items: T[], fromIndex: number, toIndex: number) {
 export function addIdToItems<T>(items: T[]): SortedItem<T>[] {
   const timestamp = Date.now();
   return items.map((item, index) => {
-    return { ...item, id: `${timestamp}-${index}` };
+    return { ...item, $id: `${timestamp}-${index}` };
   });
 }

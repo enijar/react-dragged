@@ -34,7 +34,7 @@ export default function DragSort<Item>({
   const renderItemRef = React.useRef<RenderItem<Item>>(renderItem);
   React.useMemo(() => {
     renderItemRef.current = renderItem;
-  }, [onChange]);
+  }, [renderItem]);
 
   /**
    * Logic
@@ -81,7 +81,12 @@ export default function DragSort<Item>({
             break;
           case "dragend":
             element.dataset.dragSortState = "static";
-            onChangeRef.current([...sortedItemsRef.current]);
+            onChangeRef.current(
+              sortedItemsRef.current.map((item) => {
+                delete item.$id;
+                return item;
+              })
+            );
             break;
         }
       };
@@ -108,7 +113,7 @@ export default function DragSort<Item>({
       {sortedItems.map((item, index) => {
         return (
           <ItemElement
-            key={item.id}
+            key={item.$id}
             draggable
             data-drag-sort-state="static"
             data-drag-sort-type="item"
